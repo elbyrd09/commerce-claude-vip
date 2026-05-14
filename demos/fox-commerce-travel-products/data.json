@@ -1,0 +1,272 @@
+[
+  {
+    "id": "1",
+    "name": "Tide Pen Pro stain remover",
+    "description": "",
+    "price": "$7.98",
+    "original_price": "",
+    "discount": "33% off",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "2",
+    "name": "Bagsmart large toiletry bag with hanging hook",
+    "description": "",
+    "price": "$20.99",
+    "original_price": "",
+    "discount": "25% off",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "3",
+    "name": "Portable charger with built-in cables",
+    "description": "",
+    "price": "$22.65",
+    "original_price": "",
+    "discount": "15% off",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "4",
+    "name": "Bluetooth wireless audio transmitter adapter",
+    "description": "",
+    "price": "$34.97",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "5",
+    "name": "Apple AirTag",
+    "description": "",
+    "price": "$29",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "6",
+    "name": "Packing cubes, set of 5",
+    "description": "",
+    "price": "$27.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "7",
+    "name": "Colgate Max Fresh Wisp mini toothbrushes, 24-count",
+    "description": "",
+    "price": "$23.96",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "8",
+    "name": "Mini first-aid kit",
+    "description": "",
+    "price": "$9.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "9",
+    "name": "Foldable travel toothbrush, 3-pack",
+    "description": "",
+    "price": "$6.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Must-pack products for any trip"
+  },
+  {
+    "id": "10",
+    "name": "Waterproof phone pouch",
+    "description": "",
+    "price": "$9.99",
+    "original_price": "",
+    "discount": "50% off",
+    "category": "Cruises"
+  },
+  {
+    "id": "11",
+    "name": "Magnetic hooks",
+    "description": "",
+    "price": "$9.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "12",
+    "name": "Travel wallet",
+    "description": "",
+    "price": "$12.99",
+    "original_price": "",
+    "discount": "7% off",
+    "category": "Cruises"
+  },
+  {
+    "id": "13",
+    "name": "Nausea Reliefband",
+    "description": "",
+    "price": "$119.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "14",
+    "name": "Portable lock box",
+    "description": "",
+    "price": "$35.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "15",
+    "name": "Cruise ship approved magnetic night light",
+    "description": "",
+    "price": "$19.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "16",
+    "name": "Mesh over-the-door organizer",
+    "description": "",
+    "price": "$17.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "17",
+    "name": "Cruise lanyards",
+    "description": "",
+    "price": "$13.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "18",
+    "name": "Cruise-approved travel power strip",
+    "description": "Non-surge protected, 3 AC outlets, 2 USB-C ports, 2 USB-A ports. Charges up to 7 devices simultaneously.",
+    "price": "$14.99",
+    "original_price": "$20.99",
+    "discount": "29% off",
+    "category": "Cruises"
+  },
+  {
+    "id": "19",
+    "name": "Magnetic hook and overdoor organizer",
+    "description": "Magnetic hooks and mesh pocket organizer with 15 large pockets plus over-the-door hooks.",
+    "price": "$19.76",
+    "original_price": "$21.95",
+    "discount": "10% off",
+    "category": "Cruises"
+  },
+  {
+    "id": "20",
+    "name": "Travelpro Pathways 3 hardside 3-piece set",
+    "description": "21\", 25\", and 28\" suitcases with polycarbonate shell, spinner wheels, telescopic handles, and built-in TSA lock.",
+    "price": "$674.97",
+    "original_price": "",
+    "discount": "",
+    "category": "Cruises"
+  },
+  {
+    "id": "21",
+    "name": "Good Sam roadside assistance plan",
+    "description": "",
+    "price": "starting at $64.95",
+    "original_price": "",
+    "discount": "50% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "22",
+    "name": "Car headrest tablet holder",
+    "description": "",
+    "price": "$17.99",
+    "original_price": "",
+    "discount": "28% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "23",
+    "name": "Band-Aid emergency first aid kit",
+    "description": "",
+    "price": "$10.98",
+    "original_price": "",
+    "discount": "25% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "24",
+    "name": "MagBuddy Elite phone mount",
+    "description": "",
+    "price": "$18.99",
+    "original_price": "",
+    "discount": "24% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "25",
+    "name": "Car trash can",
+    "description": "Hotor car trash can with lid, side pockets and adjustable strap. Doubles as storage bag or mini cooler.",
+    "price": "$9.49",
+    "original_price": "$12.99",
+    "discount": "23% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "26",
+    "name": "Hand Sanitizer Hand Wipes, 3-pack",
+    "description": "",
+    "price": "$9.99",
+    "original_price": "",
+    "discount": "9% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "27",
+    "name": "Car jump starter",
+    "description": "",
+    "price": "$99.95",
+    "original_price": "",
+    "discount": "",
+    "category": "Road trips"
+  },
+  {
+    "id": "28",
+    "name": "Portable air compressor",
+    "description": "",
+    "price": "$69.99",
+    "original_price": "",
+    "discount": "",
+    "category": "Road trips"
+  },
+  {
+    "id": "29",
+    "name": "Autio unlimited 3-year plan",
+    "description": "Plays short audio stories about towns and landmarks you drive through, narrated by names like Kevin Costner.",
+    "price": "$29.99",
+    "original_price": "$69.99",
+    "discount": "57% off",
+    "category": "Road trips"
+  },
+  {
+    "id": "30",
+    "name": "Anker Nano 45W portable charger",
+    "description": "",
+    "price": "$49.99",
+    "original_price": "$59.99",
+    "discount": "17% off",
+    "category": "Road trips"
+  }
+]
