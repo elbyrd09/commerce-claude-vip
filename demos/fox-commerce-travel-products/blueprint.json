@@ -1,0 +1,36 @@
+{
+  "landingPage": "/wp-admin/post-new.php",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "remote-data-blocks"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/plugins/demo-connector/demo-connector.php",
+      "data": "<?php\n/**\n * Plugin Name: Fox News Travel Packing List\n * Description: Displays Fox News travel packing list products via Remote Data Blocks.\n * Version: 1.0.0\n */\n\nfunction register_fox_news_travel_packing_list_block() {\n    $data_source = [\n        'display_name' => 'Fox News Travel Packing List API',\n        'endpoint'     => 'https://elbyrd09.github.io/commerce-claude-vip/demos/fox-commerce-travel-products/data.json',\n    ];\n\n    $render_query = [\n        'display_name'  => 'Get Travel Packing List Items',\n        'data_source'   => $data_source,\n        'output_schema' => [\n            'is_collection' => true,\n            'type'          => [\n                'id'             => [ 'name' => 'ID',             'path' => '$.id',             'type' => 'id'     ],\n                'name'           => [ 'name' => 'Name',           'path' => '$.name',           'type' => 'string' ],\n                'description'    => [ 'name' => 'Description',    'path' => '$.description',    'type' => 'string' ],\n                'price'          => [ 'name' => 'Price',          'path' => '$.price',          'type' => 'string' ],\n                'original_price' => [ 'name' => 'Original Price', 'path' => '$.original_price', 'type' => 'string' ],\n                'discount'       => [ 'name' => 'Discount',       'path' => '$.discount',       'type' => 'string' ],\n                'category'       => [ 'name' => 'Category',       'path' => '$.category',       'type' => 'string' ],\n            ],\n        ],\n    ];\n\n    register_remote_data_block([\n        'title'        => 'Fox News Travel Packing List',\n        'render_query' => [ 'query' => $render_query ],\n    ]);\n}\nadd_action( 'init', 'register_fox_news_travel_packing_list_block', 10, 0 );\n"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "demo-connector/demo-connector.php"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Demo \u2014 Fox News Travel Packing List"
+      }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}
