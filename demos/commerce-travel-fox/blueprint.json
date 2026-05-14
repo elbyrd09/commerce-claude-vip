@@ -1,0 +1,40 @@
+{
+  "landingPage": "/wp-admin/post-new.php",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "remote-data-blocks"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/plugins/demo-connector"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/plugins/demo-connector/demo-connector.php",
+      "data": "<?php\n/**\n * Plugin Name: Fox News Travel Packing List\n * Description: Registers a Remote Data Block for the Fox News Travel Packing List product feed.\n * Version:     1.0.0\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nfunction register_fox_news_travel_packing_list_block() {\n\tif ( ! function_exists( 'register_remote_data_block' ) ) {\n\t\treturn;\n\t}\n\n\t$data_source = [\n\t\t'display_name' => 'Fox News Travel Packing List API',\n\t\t'endpoint'     => 'https://elbyrd09.github.io/commerce-claude-vip/demos/commerce-travel-fox/data.json',\n\t];\n\n\t$render_query = [\n\t\t'display_name'  => 'Get Travel Packing List Items',\n\t\t'data_source'   => $data_source,\n\t\t'output_schema' => [\n\t\t\t'is_collection' => true,\n\t\t\t'type'          => [\n\t\t\t\t'id'             => [ 'name' => 'ID',             'path' => '$.id',             'type' => 'id'     ],\n\t\t\t\t'name'           => [ 'name' => 'Name',           'path' => '$.name',           'type' => 'string' ],\n\t\t\t\t'description'    => [ 'name' => 'Description',    'path' => '$.description',    'type' => 'string' ],\n\t\t\t\t'price'          => [ 'name' => 'Price',          'path' => '$.price',          'type' => 'string' ],\n\t\t\t\t'original_price' => [ 'name' => 'Original Price', 'path' => '$.original_price', 'type' => 'string' ],\n\t\t\t\t'discount'       => [ 'name' => 'Discount',       'path' => '$.discount',       'type' => 'string' ],\n\t\t\t\t'brand'          => [ 'name' => 'Brand',          'path' => '$.brand',          'type' => 'string' ],\n\t\t\t\t'category'       => [ 'name' => 'Category',       'path' => '$.category',       'type' => 'string' ],\n\t\t\t],\n\t\t],\n\t];\n\n\tregister_remote_data_block( [\n\t\t'title'        => 'Fox News Travel Packing List',\n\t\t'render_query' => [ 'query' => $render_query ],\n\t] );\n}\nadd_action( 'init', 'register_fox_news_travel_packing_list_block', 10, 0 );"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "demo-connector/demo-connector.php"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Demo \u2014 Fox News Travel Packing List"
+      }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}
