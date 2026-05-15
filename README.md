@@ -1,19 +1,35 @@
 # demo-commerce-claude
 
-A CLI tool for sales engineers that turns any customer product page into a live, shareable WordPress Playground demo using Remote Data Blocks.
+A pipeline for sales engineers that turns any customer product page into a live, shareable WordPress Playground demo using Remote Data Blocks. Runs locally via CLI or triggered from GitHub Actions — no local setup required for teammates.
 
 ---
 
 ## What it does
 
 1. **Scrapes** a customer's product page and extracts product data
-2. **Maps** that data to a Remote Data Blocks input/output schema
-3. **Deploys** a mock JSON API to GitHub Pages
-4. **Generates** a WordPress Playground blueprint with Remote Data Blocks pre-installed and the data source pre-registered — outputs a shareable link
+2. **Maps** that data to a Remote Data Blocks schema, grouped by category
+3. **Deploys** one mock JSON API endpoint per category to GitHub Pages
+4. **Generates** a WordPress Playground blueprint with Remote Data Blocks pre-installed, the connector plugin pre-registered, and a shareable link
 
 ---
 
-## Setup
+## Running via GitHub Actions (recommended for teams)
+
+No local setup needed. From the repo:
+
+**Actions → Build Demo → Run workflow**
+
+Fill in:
+- **Customer product page URL**
+- **Demo slug** (e.g. `acme-spring-2025`)
+
+The job summary will show all generated URLs when complete, including a one-click Playground link.
+
+Requires one repo secret: `ANTHROPIC_API_KEY` (Settings → Secrets and variables → Actions).
+
+---
+
+## Running locally (CLI)
 
 ### Prerequisites
 - [uv](https://docs.astral.sh/uv/) (`brew install uv`)
@@ -42,29 +58,27 @@ GITHUB_PAGES_BRANCH=gh-pages   # default, can omit
 uv run main.py setup
 ```
 
-This creates the `gh-pages` branch if it doesn't exist. Then go to your repo's **Settings → Pages** and set the source to the `gh-pages` branch, `/ (root)` folder.
+Creates the `gh-pages` branch if it doesn't exist. Then enable GitHub Pages in your repo settings: **Settings → Pages → Source: `gh-pages` branch, `/ (root)`**.
 
----
-
-## Usage
+### Build a demo
 
 ```bash
 uv run main.py build
 ```
 
-You'll be prompted for:
-- **Customer product page URL** — the page you want to scrape
-- **Demo slug** — a short identifier used in the hosted file path, e.g. `acme-spring-2025`
-
-Output:
+You'll be prompted for a URL and slug. Output:
 
 ```
-Mock API    https://your-username.github.io/your-repo/demos/acme-spring-2025/data.json
+Mock API endpoints
+  [all]      https://your-username.github.io/your-repo/demos/acme-spring-2025/data.json
+  [travel]   https://your-username.github.io/your-repo/demos/acme-spring-2025/data-travel.json
+  [outdoor]  https://your-username.github.io/your-repo/demos/acme-spring-2025/data-outdoor.json
+
 Blueprint   https://your-username.github.io/your-repo/demos/acme-spring-2025/blueprint.json
 Playground  https://playground.wordpress.net/?blueprint-url=...
 ```
 
-Share the **Playground** link with teammates. When opened, it launches a pre-configured WordPress instance with Remote Data Blocks installed and the data source ready to use. Open a new page in the block editor and insert the block from the inserter.
+Share the **Playground** link. When opened, it launches a pre-configured WordPress instance with Remote Data Blocks installed and every category registered as its own insertable block.
 
 ---
 
@@ -72,81 +86,96 @@ Share the **Playground** link with teammates. When opened, it launches a pre-con
 
 ### Stage 1 — Scraping (`stages/scraper.py`)
 
-The tool fetches the customer URL with `requests` and parses it with BeautifulSoup. Product extraction uses Claude (Anthropic API), but the input is optimized in two ways:
+Fetches the customer URL with `requests` and parses it with BeautifulSoup. Product extraction is handled by Claude (Anthropic API), with the input optimised to keep token usage low:
 
 **JSON-LD first (preferred path)**
-Most modern e-commerce sites embed structured data in their HTML as `<script type="application/ld+json">` tags. This is schema.org markup added primarily for SEO — it contains clean, labeled product data (name, price, SKU, image, description) without any HTML noise. When JSON-LD is found, only that data is sent to Claude (~8k chars max), making the call fast and cheap.
+Most modern e-commerce sites embed structured data as `<script type="application/ld+json">` tags — schema.org markup added for SEO. It contains clean, labelled product data (name, price, SKU, image, description) without HTML noise. When found, only this is sent to Claude (~8k chars max).
 
 **Plain text fallback**
-If no JSON-LD is present, the tool strips all HTML tags and sends compact plain text to Claude (~15k chars). Claude infers products from patterns in the text — repeated structures, currency symbols, "add to cart" language, grouped name/price pairs, etc. This is less reliable than JSON-LD and may miss products on heavily JavaScript-rendered pages (where the server sends an empty shell and the browser builds the content).
+If no JSON-LD is present, all HTML tags are stripped and compact plain text is sent (~15k chars). Claude infers products from patterns — currency symbols, "add to cart" language, repeated name/price groupings. Less reliable on heavily JS-rendered pages where the server returns an empty shell.
 
 **What counts as a product**
-There is no hardcoded rule. Claude interprets the page content and decides what looks like a product. This makes the tool flexible across different site structures, but it means results on unusual pages may need a second pass.
+No hardcoded rules — Claude interprets the content. Flexible across site structures but results on unusual pages may need a second pass. Output is capped at 50 items with descriptions truncated to 150 characters.
 
-Output is capped at 50 items with descriptions truncated to 150 characters to stay within token limits.
+---
 
-### Stage 2 — Schema mapping (`stages/mapper.py`)
+### Stage 2 — Schema mapping & category splitting (`stages/mapper.py`)
 
-Claude takes the extracted products and generates three things:
+Claude takes the extracted products and generates:
 
-- **`json_data`** — a normalized JSON array of all products, used as the mock API payload
-- **`output_schema`** — a Remote Data Blocks field map using JSONPath expressions (e.g. `$.name`, `$.price`) and appropriate RDB field types (`string`, `image_url`, `url`, `id`, etc.)
-- **`php_plugin_code`** — a complete WordPress plugin PHP file that registers the data source and block using `register_remote_data_block()`
+- **`categories`** — products grouped by detected category (e.g. `all`, `travel`, `outdoor-gear`). The `all` key always contains every product. Limited to 6 categories max.
+- **`output_schema`** — a Remote Data Blocks field map using JSONPath expressions and appropriate RDB field types (`string`, `image_url`, `url`, `id`, etc.)
+- **`php_plugin_code`** — a complete WordPress plugin that registers one `register_remote_data_block()` call per category, each pointing to its own endpoint via a `%%ENDPOINT_{key}%%` placeholder
 
 The RDB registration pattern used:
 
 ```php
-function register_demo_block() {
-    $data_source = [
-        'display_name' => 'Demo Products',
-        'endpoint'     => 'https://your-api-url/data.json',
-    ];
-
-    $render_query = [
-        'display_name'  => 'Get Products',
-        'data_source'   => $data_source,
-        'output_schema' => [
-            'is_collection' => true,
-            'type' => [
-                'id'    => ['name' => 'ID',    'path' => '$.id',    'type' => 'id'],
-                'name'  => ['name' => 'Name',  'path' => '$.name',  'type' => 'string'],
-                'price' => ['name' => 'Price', 'path' => '$.price', 'type' => 'string'],
-            ],
+function register_demo_blocks() {
+    $output_schema = [
+        'is_collection' => true,
+        'type' => [
+            'id'    => ['name' => 'ID',    'path' => '$.id',    'type' => 'id'],
+            'name'  => ['name' => 'Name',  'path' => '$.name',  'type' => 'string'],
+            'price' => ['name' => 'Price', 'path' => '$.price', 'type' => 'string'],
         ],
     ];
 
     register_remote_data_block([
-        'title'        => 'Demo Products',
-        'render_query' => ['query' => $render_query],
+        'title'        => 'Demo Products — All',
+        'render_query' => [
+            'query' => [
+                'display_name'  => 'Get All Products',
+                'data_source'   => ['display_name' => 'Demo Products', 'endpoint' => 'https://...data.json'],
+                'output_schema' => $output_schema,
+            ],
+        ],
+    ]);
+
+    register_remote_data_block([
+        'title'        => 'Demo Products — Travel',
+        'render_query' => [
+            'query' => [
+                'display_name'  => 'Get Travel Products',
+                'data_source'   => ['display_name' => 'Demo Products', 'endpoint' => 'https://...data-travel.json'],
+                'output_schema' => $output_schema,
+            ],
+        ],
     ]);
 }
-add_action('init', 'register_demo_block', 10, 0);
+add_action('init', 'register_demo_blocks', 10, 0);
 ```
 
-The endpoint URL is injected at deploy time using a `%%ENDPOINT_URL%%` placeholder.
+Endpoint placeholders (`%%ENDPOINT_all%%`, `%%ENDPOINT_travel%%`, etc.) are replaced with real GitHub Pages URLs after deployment.
+
+**Why no input schema?**
+Filtering is handled at build time — each category has its own static endpoint that always returns the right subset. There is nothing to pass as a query parameter, so no input schema is needed.
+
+---
 
 ### Stage 3 — GitHub Pages deployment (`stages/api_host.py`)
 
-Two files are pushed to the `gh-pages` branch via the GitHub Contents API:
+Pushes files to the `gh-pages` branch via the GitHub Contents API:
 
-- `demos/{slug}/data.json` — the mock API payload
+- `demos/{slug}/data.json` — all products
+- `demos/{slug}/data-{category}.json` — one file per detected category
 - `demos/{slug}/blueprint.json` — the Playground blueprint
 
-GitHub Pages serves both with `Access-Control-Allow-Origin: *` by default, so WordPress Playground can fetch them cross-origin without any CORS configuration.
+GitHub Pages serves all files with `Access-Control-Allow-Origin: *` by default, so WordPress Playground can fetch them cross-origin with no CORS configuration. If the `gh-pages` branch doesn't exist, it's created automatically from the default branch HEAD.
 
-If the `gh-pages` branch doesn't exist, the tool creates it automatically from the default branch HEAD.
+---
 
 ### Stage 4 — Playground blueprint (`stages/blueprint.py`)
 
-The blueprint is a JSON file that tells WordPress Playground how to configure itself. Steps executed on load:
+Generates a `blueprint.json` that tells WordPress Playground how to configure itself on load:
 
-1. Install Remote Data Blocks from wordpress.org (v1.4.3+)
-2. Write the generated connector plugin to the virtual filesystem
-3. Activate the connector plugin
-4. Set the site name to match the demo title
-5. Log in as admin
+1. Install Remote Data Blocks from wordpress.org
+2. Create the `demo-connector` plugin directory
+3. Write the generated connector plugin file
+4. Activate the connector plugin
+5. Set the site name to the demo title
+6. Log in as admin and land on the block editor
 
-The Playground URL uses the `?blueprint-url=` parameter pointing to the hosted blueprint file, rather than encoding the blueprint in the URL hash. This avoids URL length limits and gives you a stable link you can update by re-running the tool with the same slug.
+The Playground URL uses `?blueprint-url=` pointing to the hosted blueprint file rather than encoding the blueprint in the URL hash — no length limits, stable URL, re-runnable with the same slug to update.
 
 ---
 
@@ -158,6 +187,7 @@ The Playground URL uses the `?blueprint-url=` parameter pointing to the hosted b
 | No JSON-LD, dense HTML | Falls back to plain text extraction — less precise |
 | Page behind a login | Request will fail or return a login page |
 | Large product catalogue (50+ items) | Capped at 50 items per run |
+| No clear categories detected | Returns `all` key only — single block registered |
 | RDB PHP API changes | Generated plugin code may need minor edits if RDB updates its registration API |
 
 ---
@@ -166,15 +196,19 @@ The Playground URL uses the `?blueprint-url=` parameter pointing to the hosted b
 
 ```
 demo-commerce-claude/
-├── .env                  # your credentials (not committed)
-├── .env.example          # template
-├── pyproject.toml        # dependencies for uv
+├── .github/
+│   └── workflows/
+│       └── build-demo.yml    # GHA workflow — trigger from GitHub UI
+├── .env                      # your credentials (not committed)
+├── .env.example              # template
+├── .gitignore
+├── pyproject.toml            # dependencies for uv
 ├── requirements.txt
-├── config.py             # reads env vars
-├── main.py               # CLI (build, setup commands)
+├── config.py                 # reads env vars
+├── main.py                   # CLI (build, setup commands) + GHA summary output
 └── stages/
-    ├── scraper.py        # Stage 1: fetch + extract
-    ├── mapper.py         # Stage 2: RDB schema + PHP plugin
-    ├── api_host.py       # Stage 3: GitHub Pages deployment
-    └── blueprint.py      # Stage 4: Playground blueprint
+    ├── scraper.py            # Stage 1: fetch + extract products
+    ├── mapper.py             # Stage 2: category split + RDB schema + PHP plugin
+    ├── api_host.py           # Stage 3: deploy per-category JSON to GitHub Pages
+    └── blueprint.py          # Stage 4: compose Playground blueprint
 ```
