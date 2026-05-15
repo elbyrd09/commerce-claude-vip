@@ -1,0 +1,29 @@
+[
+  {
+    "id": "6",
+    "name": "Orthopedic Pet Bed",
+    "description": "Distributes weight evenly for pain relief and joint support. Removable, machine-washable, water-resistant cover.",
+    "category": "Pet Beds",
+    "brand": null,
+    "discount": "Up to 40% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "7",
+    "name": "Cat Tree with Perch, Hammocks & Scratching Post",
+    "description": "Cat tree with top perch, two hammocks, scratching post, hanging ball, and condo. Soft faux fur.",
+    "category": "Cat Furniture",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "19",
+    "name": "Bedsure Pet Beds",
+    "description": null,
+    "category": "Pet Beds",
+    "brand": "Bedsure",
+    "discount": "Up to 40% off",
+    "url": "https://www.amazon.com"
+  }
+]
