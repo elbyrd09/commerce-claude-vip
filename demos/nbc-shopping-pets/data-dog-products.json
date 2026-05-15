@@ -1,0 +1,101 @@
+[
+  {
+    "id": "1",
+    "name": "Woof Pupsicle Starter Set",
+    "description": "Puzzle dog toy with re-freezable treat mold and chicken treats. Available in small, large, and extra-large sizes.",
+    "category": "Dog Toys",
+    "brand": "Woof",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "4",
+    "name": "Just Food For Dogs Fish & Sweet Potato Meals (7-Pack)",
+    "description": "Fresh high-protein dog food pouches for sensitive stomachs. Lasts 18 months frozen, 7 days refrigerated.",
+    "category": "Dog Food",
+    "brand": "Just Food For Dogs",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "8",
+    "name": "Beef-Flavored Dog Treat Sticks",
+    "description": "Hard, flexible beef-flavored sticks. Keeps dogs entertained for several minutes. Suitable for small dogs.",
+    "category": "Dog Treats",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "9",
+    "name": "Mrs. Meyer's Dog Coat Conditioning Spray",
+    "description": "Conditions and adds shine to dog coat, reduces odor. Contains glycerin, oat extract, aloe, chamomile, rosemary.",
+    "category": "Dog Grooming",
+    "brand": "Mrs. Meyer's",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "10",
+    "name": "Front-Clip Dog Harness",
+    "description": "Front-clip harness to reduce pulling. Lightly padded, breathable, easy-to-adjust straps. Sizes XS through XL.",
+    "category": "Dog Accessories",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "11",
+    "name": "Dog Puzzle Slow Feeder Toy (24 Compartments)",
+    "description": "Mentally stimulating puzzle toy with 24 compartments and sliding tray. Slows eating and hides treats/kibble.",
+    "category": "Dog Toys",
+    "brand": null,
+    "discount": "Up to 42% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "15",
+    "name": "IAMS Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "IAMS",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "16",
+    "name": "Minties Dental Chews",
+    "description": null,
+    "category": "Dog Treats",
+    "brand": "Minties",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "18",
+    "name": "Bocce's Bakery Dog Treats",
+    "description": null,
+    "category": "Dog Treats",
+    "brand": "Bocce's Bakery",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "20",
+    "name": "Outward Hound Dog Toys",
+    "description": null,
+    "category": "Dog Toys",
+    "brand": "Outward Hound",
+    "discount": "Up to 42% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "24",
+    "name": "Maev Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "Maev",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  }
+]
