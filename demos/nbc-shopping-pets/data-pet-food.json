@@ -1,0 +1,56 @@
+[
+  {
+    "id": "4",
+    "name": "Just Food For Dogs Fish & Sweet Potato Meals (7-Pack)",
+    "description": "Fresh high-protein dog food pouches for sensitive stomachs. Lasts 18 months frozen, 7 days refrigerated.",
+    "category": "Dog Food",
+    "brand": "Just Food For Dogs",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "15",
+    "name": "IAMS Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "IAMS",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "22",
+    "name": "Blue Buffalo Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Blue Buffalo",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "23",
+    "name": "Open Farm Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Open Farm",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "24",
+    "name": "Maev Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "Maev",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "25",
+    "name": "Natural Balance Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Natural Balance",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  }
+]
