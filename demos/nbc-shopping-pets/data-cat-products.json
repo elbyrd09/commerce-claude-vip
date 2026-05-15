@@ -1,0 +1,38 @@
+[
+  {
+    "id": "3",
+    "name": "Lickable Cat Treats (Squeeze Tubes)",
+    "description": "High-moisture puree cat treats in small tubes. Great for picky eaters and keeping cats hydrated.",
+    "category": "Cat Treats",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "5",
+    "name": "Fresh Step Clumping Cat Litter",
+    "description": "Odor-controlling clumping litter suitable for multi-cat homes. Lighter than most competing brands.",
+    "category": "Cat Litter",
+    "brand": "Fresh Step",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "7",
+    "name": "Cat Tree with Perch, Hammocks & Scratching Post",
+    "description": "Cat tree with top perch, two hammocks, scratching post, hanging ball, and condo. Soft faux fur.",
+    "category": "Cat Furniture",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "14",
+    "name": "Temptations Cat Treats",
+    "description": null,
+    "category": "Cat Treats",
+    "brand": "Temptations",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  }
+]
