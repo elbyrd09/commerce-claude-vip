@@ -1,0 +1,40 @@
+{
+  "landingPage": "/wp-admin/post-new.php",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "remote-data-blocks"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/plugins/demo-connector"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/plugins/demo-connector/demo-connector.php",
+      "data": "<?php\n/**\n * Plugin Name: Amazon Pet Days Deals\n * Description: Remote Data Blocks integration for Amazon Pet Days Deals with per-category filtering.\n * Version: 1.0.0\n */\n\nfunction register_amazon_pet_days_deals_blocks() {\n    $output_schema = [\n        'is_collection' => true,\n        'type' => [\n            'id'          => [ 'name' => 'ID',          'path' => '$.id',          'type' => 'id'         ],\n            'name'        => [ 'name' => 'Name',        'path' => '$.name',        'type' => 'string'     ],\n            'description' => [ 'name' => 'Description', 'path' => '$.description', 'type' => 'string'     ],\n            'category'    => [ 'name' => 'Category',    'path' => '$.category',    'type' => 'string'     ],\n            'brand'       => [ 'name' => 'Brand',       'path' => '$.brand',       'type' => 'string'     ],\n            'discount'    => [ 'name' => 'Discount',    'path' => '$.discount',    'type' => 'string'     ],\n            'url'         => [ 'name' => 'URL',         'path' => '$.url',         'type' => 'button_url' ],\n        ],\n    ];\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 All',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get All Pet Days Deals',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 Dog Products',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get Dog Products',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data-dog-products.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 Cat Products',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get Cat Products',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data-cat-products.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 Pet Food',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get Pet Food',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data-pet-food.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 Pet Beds & Furniture',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get Pet Beds and Furniture',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data-pet-beds-furniture.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n\n    register_remote_data_block([\n        'title'        => 'Amazon Pet Days Deals \u2014 Pet Health & Grooming',\n        'render_query' => [\n            'query' => [\n                'display_name'  => 'Get Pet Health and Grooming',\n                'data_source'   => [ 'display_name' => 'Amazon Pet Days Deals API', 'endpoint' => 'https://elbyrd09.github.io/commerce-claude-vip/demos/nbc-shopping-pets/data-pet-health-grooming.json' ],\n                'output_schema' => $output_schema,\n            ],\n        ],\n    ]);\n}\nadd_action( 'init', 'register_amazon_pet_days_deals_blocks', 10, 0 );\n"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "demo-connector/demo-connector.php"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Demo \u2014 Amazon Pet Days Deals"
+      }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}
