@@ -1,0 +1,38 @@
+[
+  {
+    "id": "9",
+    "name": "Mrs. Meyer's Dog Coat Conditioning Spray",
+    "description": "Conditions and adds shine to dog coat, reduces odor. Contains glycerin, oat extract, aloe, chamomile, rosemary.",
+    "category": "Dog Grooming",
+    "brand": "Mrs. Meyer's",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "12",
+    "name": "Pet Eye & Body Wipes (100-Count Tub)",
+    "description": "Pre-soaked wipes for dogs and cats. Use on eye area, paws, body, or butt. Textured to trap dirt and debris.",
+    "category": "Pet Grooming",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "13",
+    "name": "Frontline Flea and Tick Control",
+    "description": null,
+    "category": "Flea & Tick",
+    "brand": "Frontline",
+    "discount": "Up to 25% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "21",
+    "name": "Zesty Paws Pet Supplements",
+    "description": null,
+    "category": "Pet Supplements",
+    "brand": "Zesty Paws",
+    "discount": "Up to 25% off",
+    "url": "https://www.amazon.com"
+  }
+]
