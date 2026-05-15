@@ -1,0 +1,227 @@
+[
+  {
+    "id": "1",
+    "name": "Woof Pupsicle Starter Set",
+    "description": "Puzzle dog toy with re-freezable treat mold and chicken treats. Available in small, large, and extra-large sizes.",
+    "category": "Dog Toys",
+    "brand": "Woof",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "2",
+    "name": "Petcube 360-Degree Pet Camera",
+    "description": "Livestreams 360-degree view, tilts/rotates to follow pet, night vision, two-way audio via Petcube app.",
+    "category": "Pet Cameras",
+    "brand": "Petcube",
+    "discount": "Up to 35% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "3",
+    "name": "Lickable Cat Treats (Squeeze Tubes)",
+    "description": "High-moisture puree cat treats in small tubes. Great for picky eaters and keeping cats hydrated.",
+    "category": "Cat Treats",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "4",
+    "name": "Just Food For Dogs Fish & Sweet Potato Meals (7-Pack)",
+    "description": "Fresh high-protein dog food pouches for sensitive stomachs. Lasts 18 months frozen, 7 days refrigerated.",
+    "category": "Dog Food",
+    "brand": "Just Food For Dogs",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "5",
+    "name": "Fresh Step Clumping Cat Litter",
+    "description": "Odor-controlling clumping litter suitable for multi-cat homes. Lighter than most competing brands.",
+    "category": "Cat Litter",
+    "brand": "Fresh Step",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "6",
+    "name": "Orthopedic Pet Bed",
+    "description": "Distributes weight evenly for pain relief and joint support. Removable, machine-washable, water-resistant cover.",
+    "category": "Pet Beds",
+    "brand": null,
+    "discount": "Up to 40% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "7",
+    "name": "Cat Tree with Perch, Hammocks & Scratching Post",
+    "description": "Cat tree with top perch, two hammocks, scratching post, hanging ball, and condo. Soft faux fur.",
+    "category": "Cat Furniture",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "8",
+    "name": "Beef-Flavored Dog Treat Sticks",
+    "description": "Hard, flexible beef-flavored sticks. Keeps dogs entertained for several minutes. Suitable for small dogs.",
+    "category": "Dog Treats",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "9",
+    "name": "Mrs. Meyer's Dog Coat Conditioning Spray",
+    "description": "Conditions and adds shine to dog coat, reduces odor. Contains glycerin, oat extract, aloe, chamomile, rosemary.",
+    "category": "Dog Grooming",
+    "brand": "Mrs. Meyer's",
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "10",
+    "name": "Front-Clip Dog Harness",
+    "description": "Front-clip harness to reduce pulling. Lightly padded, breathable, easy-to-adjust straps. Sizes XS through XL.",
+    "category": "Dog Accessories",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "11",
+    "name": "Dog Puzzle Slow Feeder Toy (24 Compartments)",
+    "description": "Mentally stimulating puzzle toy with 24 compartments and sliding tray. Slows eating and hides treats/kibble.",
+    "category": "Dog Toys",
+    "brand": null,
+    "discount": "Up to 42% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "12",
+    "name": "Pet Eye & Body Wipes (100-Count Tub)",
+    "description": "Pre-soaked wipes for dogs and cats. Use on eye area, paws, body, or butt. Textured to trap dirt and debris.",
+    "category": "Pet Grooming",
+    "brand": null,
+    "discount": null,
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "13",
+    "name": "Frontline Flea and Tick Control",
+    "description": null,
+    "category": "Flea & Tick",
+    "brand": "Frontline",
+    "discount": "Up to 25% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "14",
+    "name": "Temptations Cat Treats",
+    "description": null,
+    "category": "Cat Treats",
+    "brand": "Temptations",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "15",
+    "name": "IAMS Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "IAMS",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "16",
+    "name": "Minties Dental Chews",
+    "description": null,
+    "category": "Dog Treats",
+    "brand": "Minties",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "17",
+    "name": "Earth Rated Pet Products",
+    "description": null,
+    "category": "Pet Supplies",
+    "brand": "Earth Rated",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "18",
+    "name": "Bocce's Bakery Dog Treats",
+    "description": null,
+    "category": "Dog Treats",
+    "brand": "Bocce's Bakery",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "19",
+    "name": "Bedsure Pet Beds",
+    "description": null,
+    "category": "Pet Beds",
+    "brand": "Bedsure",
+    "discount": "Up to 40% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "20",
+    "name": "Outward Hound Dog Toys",
+    "description": null,
+    "category": "Dog Toys",
+    "brand": "Outward Hound",
+    "discount": "Up to 42% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "21",
+    "name": "Zesty Paws Pet Supplements",
+    "description": null,
+    "category": "Pet Supplements",
+    "brand": "Zesty Paws",
+    "discount": "Up to 25% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "22",
+    "name": "Blue Buffalo Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Blue Buffalo",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "23",
+    "name": "Open Farm Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Open Farm",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "24",
+    "name": "Maev Dog Food",
+    "description": null,
+    "category": "Dog Food",
+    "brand": "Maev",
+    "discount": "Up to 30% off",
+    "url": "https://www.amazon.com"
+  },
+  {
+    "id": "25",
+    "name": "Natural Balance Pet Food",
+    "description": null,
+    "category": "Pet Food",
+    "brand": "Natural Balance",
+    "discount": "Up to 20% off",
+    "url": "https://www.amazon.com"
+  }
+]
